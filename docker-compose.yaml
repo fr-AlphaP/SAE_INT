@@ -1,0 +1,54 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise:${GRAFANA_VERSION}
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - GF_SERVER_ROOT_URL=http://localhost:3000/
+      - GF_PLUGINS_PREINSTALL=grafana-clock-panel
+    ports:
+      - '${GRAFANA_PORT}:3000'
+    volumes:
+      - grafana_storage:/var/lib/grafana
+    depends_on:
+      - influxdb2
+  influxdb2:
+    image: influxdb:${INFLUXDB_VERSION}
+    container_name: ${INFLUXDB_CONTAINER_NAME}
+    restart: unless-stopped
+    ports:
+      - '${INFLUXDB_PORT}:8086'
+    env_file:
+      - ./.env
+    secrets:
+      - influxdb2-admin-username
+      - influxdb2-admin-password
+      - influxdb2-admin-token
+    volumes:
+      - influxdb2-data:/var/lib/influxdb2
+      - influxdb2-config:/etc/influxdb2
+  telegraf:
+    image: telegraf:${TELEGRAF_VERSION}
+    container_name: telegraf
+    restart: always
+    env_file:
+      - ./.env
+    secrets:
+      - influxdb2-admin-token
+    volumes:
+      - ${TELEGRAF_CONF_FILE}:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - influxdb2
+
+volumes:
+  grafana_storage: {}
+  influxdb2-data: {}
+  influxdb2-config: {}
+
+secrets:
+  influxdb2-admin-username:
+    file: ./influx/influxdb2-admin-username
+  influxdb2-admin-password:
+    file: ./influx/influxdb2-admin-password
+  influxdb2-admin-token:
+    file: ./influx/influxdb2-admin-token
