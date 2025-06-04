@@ -28,7 +28,10 @@ services:
       - influxdb2-data:/var/lib/influxdb2
       - influxdb2-config:/etc/influxdb2
   telegraf:
-    image: telegraf:${TELEGRAF_VERSION}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      
     container_name: telegraf
     restart: always
     env_file:
@@ -37,8 +40,10 @@ services:
       - influxdb2-admin-token
     volumes:
       - ${TELEGRAF_CONF_FILE}:/etc/telegraf/telegraf.conf:ro
+      - ./script.py:/scripts/script.py:ro
     depends_on:
       - influxdb2
+    # dockerfile: Dockerfile
 
 volumes:
   grafana_storage: {}
