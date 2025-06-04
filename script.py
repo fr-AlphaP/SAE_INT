@@ -2,26 +2,40 @@
 import requests, json
 from rich import print_json
 
-# L'URL reste la même car elle demande déjà toutes les données
-url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,precipitation,precipitation_probability,wind_speed_10m&past_days=14"
+url = "https://api.open-meteo.com/v1/forecast?latitude=45.626804&longitude=1.036274&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,snowfall,snow_depth,cloud_cover,visibility,wind_speed_10m,soil_temperature_0cm,soil_moisture_0_to_1cm&timezone=auto&past_days=92&forecast_days=14"
 data = requests.get(url).json()
 
 output_data = []
 data_hourly = data['hourly']
 
-for a, b, c, d in zip(
-    data_hourly['time'],
-    data_hourly['temperature_2m'],
-    data_hourly['wind_speed_10m'],
-    data_hourly['precipitation_probability'],
-):
-    point = {
-        "timestamp": a,
-        "temperature_2m": b,
-        "wind_speed_10m": c,
-        "precipitation_probability": d,
-    }
-    output_data.append(point)
+tags = [
+    'time', 
+    'temperature_2m', 
+    'relative_humidity_2m', 
+    'apparent_temperature', 
+    'rain', 
+    'snowfall', 
+    'snow_depth', 
+    'precipitation', 
+    'cloud_cover', 
+    'visibility', 
+    'wind_speed_10m', 
+    'soil_moisture_0_to_1cm', 
+    'soil_temperature_0cm', 
+    'precipitation_probability'
+]
 
-# On affiche le JSON final
+list_of_all_values = []
+
+for value in tags:
+    value_list = data_hourly[value]
+    # print(value_list)
+    list_of_all_values.append(value_list)
+
+zipped_data = zip(*list_of_all_values)
+
+for values in zipped_data:
+    # print(tags, values)
+    output_data.append(dict(zip(tags, values)))
+
 print_json(json.dumps(output_data))
