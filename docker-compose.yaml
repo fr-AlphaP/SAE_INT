@@ -41,6 +41,7 @@ services:
     volumes:
       - ${TELEGRAF_CONF_FILE}:/etc/telegraf/telegraf.conf:ro
       - ./script.py:/scripts/script.py:ro
+      # - ./script2.py:/scripts/script2.py:ro
     depends_on:
       - influxdb2
     # dockerfile: Dockerfile
