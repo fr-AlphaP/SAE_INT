@@ -1,4 +1,15 @@
 services:
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./site/:/usr/share/nginx/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8080:80"
+
   grafana:
     image: grafana/grafana-enterprise:${GRAFANA_VERSION}
     container_name: grafana
@@ -6,12 +17,17 @@ services:
     environment:
       - GF_SERVER_ROOT_URL=http://localhost:3000/
       - GF_PLUGINS_PREINSTALL=grafana-clock-panel
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_SECURITY_COOKIE_SAMESITE=none
     ports:
       - '${GRAFANA_PORT}:3000'
     volumes:
       - grafana_storage:/var/lib/grafana
     depends_on:
       - influxdb2
+      
   influxdb2:
     image: influxdb:${INFLUXDB_VERSION}
     container_name: ${INFLUXDB_CONTAINER_NAME}
@@ -40,11 +56,9 @@ services:
       - influxdb2-admin-token
     volumes:
       - ${TELEGRAF_CONF_FILE}:/etc/telegraf/telegraf.conf:ro
-      - ./script.py:/scripts/script.py:ro
-      # - ./script2.py:/scripts/script2.py:ro
+      - ./py/script.py:/scripts/script.py:ro
     depends_on:
       - influxdb2
-    # dockerfile: Dockerfile
 
 volumes:
   grafana_storage: {}
