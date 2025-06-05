@@ -8,7 +8,7 @@ services:
       - ./site/:/usr/share/nginx/html:ro
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - "8080:80"
+      - "80:80"
 
   grafana:
     image: grafana/grafana-enterprise:${GRAFANA_VERSION}
@@ -21,10 +21,15 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
       - GF_SECURITY_COOKIE_SAMESITE=none
+      - GF_SECURITY_ADMIN_USER__FILE=/run/secrets/GF_SECURITY_ADMIN_USER__FILE
+      - GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/GF_SECURITY_ADMIN_PASSWORD__FILE
     ports:
       - '${GRAFANA_PORT}:3000'
     volumes:
       - grafana_storage:/var/lib/grafana
+    secrets:
+      - GF_SECURITY_ADMIN_USER__FILE
+      - GF_SECURITY_ADMIN_PASSWORD__FILE
     depends_on:
       - influxdb2
       
@@ -67,8 +72,12 @@ volumes:
 
 secrets:
   influxdb2-admin-username:
-    file: ./influx/influxdb2-admin-username
+    file: ./secrets/influxdb2-admin-username
   influxdb2-admin-password:
-    file: ./influx/influxdb2-admin-password
+    file: ./secrets/influxdb2-admin-password
   influxdb2-admin-token:
-    file: ./influx/influxdb2-admin-token
+    file: ./secrets/influxdb2-admin-token
+  GF_SECURITY_ADMIN_USER__FILE:
+    file: ./secrets/grafana-admin-username
+  GF_SECURITY_ADMIN_PASSWORD__FILE:
+    file: ./secrets/grafana-admin-password
