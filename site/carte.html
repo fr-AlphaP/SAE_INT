@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShowPatate - Ferme Connectée</title>
+  <title>Carte - ShowPatate</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>ShowPatate - Tableau de Bord</h1>
+      <h1>ShowPatate - Carte du Poulailler</h1>
       <div class="nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
@@ -22,22 +22,16 @@
       </div>
     </div>
     <div class="content">
-      <h2>Bienvenue sur la plateforme de gestion du poulailler ShowPatate</h2>
-      <p>Cette interface permet de surveiller et d’agir à distance sur l’environnement sonore et les équipements du poulailler.</p>
-      <ul style="margin-top: 20px; line-height: 1.8;">
-        <li>📊 Suivi en temps réel via <strong>Grafana</strong></li>
-        <li>💬 Notifications immédiates sur <strong>Telegram</strong></li>
-        <li>📍 Visualisation de la <strong>carte des capteurs</strong></li>
-        <li>⚙️ Commandes : effaroucheur, climatisation, éclairage…</li>
-      </ul>
-      <p style="margin-top: 20px;">Accédez aux onglets ci-dessus pour piloter votre ferme connectée.</p>
+      <h2>Carte interactive du poulailler</h2>
+      <p>Ci-dessous, la carte affichant l’emplacement de la ferme, des capteurs LoRaWAN, et des équipements de surveillance.</p>
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=3.135%2C43.36%2C3.139%2C43.365&layer=mapnik" frameborder="0" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
   <footer>
     <img src="logo.png" alt="Logo ShowPatate" height="40">
     <img src="logoiut.png" alt="Logo IUT" height="40">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Lorawan-logo.png" alt="Logo LoRaWAN" height="40">
-    <p>&copy; 2025 ShowPatate - IUT de Béziers</p>
+    <p>&copy; 2025 ShowPatate - Carte interactive</p>
   </footer>
 </body>
 </html>

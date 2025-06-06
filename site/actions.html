@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShowPatate - Ferme Connectée</title>
+  <title>Commandes - ShowPatate</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>ShowPatate - Tableau de Bord</h1>
+      <h1>ShowPatate - Commandes</h1>
       <div class="nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
@@ -22,22 +22,20 @@
       </div>
     </div>
     <div class="content">
-      <h2>Bienvenue sur la plateforme de gestion du poulailler ShowPatate</h2>
-      <p>Cette interface permet de surveiller et d’agir à distance sur l’environnement sonore et les équipements du poulailler.</p>
-      <ul style="margin-top: 20px; line-height: 1.8;">
-        <li>📊 Suivi en temps réel via <strong>Grafana</strong></li>
-        <li>💬 Notifications immédiates sur <strong>Telegram</strong></li>
-        <li>📍 Visualisation de la <strong>carte des capteurs</strong></li>
-        <li>⚙️ Commandes : effaroucheur, climatisation, éclairage…</li>
-      </ul>
-      <p style="margin-top: 20px;">Accédez aux onglets ci-dessus pour piloter votre ferme connectée.</p>
+      <h2>Contrôle de la ferme</h2>
+      <div class="controls">
+        <button onclick="alert('Effaroucheur activé !')">🕊️ Activer l'effaroucheur</button>
+        <button onclick="alert('Effaroucheur désactivé !')">❌ Désactiver l'effaroucheur</button>
+        <button onclick="alert('Ventilateur activée !')">❄️ Activer le ventilateur</button>
+        <button onclick="alert('Ventilateur désactivé!')">🔥 désactivéle le ventilateur</button>
+      </div>
     </div>
   </div>
   <footer>
     <img src="logo.png" alt="Logo ShowPatate" height="40">
     <img src="logoiut.png" alt="Logo IUT" height="40">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Lorawan-logo.png" alt="Logo LoRaWAN" height="40">
-    <p>&copy; 2025 ShowPatate - IUT de Béziers</p>
+    <p>&copy; 2025 ShowPatate - Contrôle Ferme</p>
   </footer>
 </body>
 </html>
