@@ -3,17 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Commandes - ShowPatate</title>
+  <title>Commandes - La Tanière Fertile</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .action-item {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .action-item:hover {
+      transform: translateY(-5px);
+    }
+    .action-item button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .action-item button:hover {
+      background-color: #cf8700;
+      transform: scale(1.05);
+    }
+    .action-item p {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>ShowPatate - Commandes</h1>
+      <h1>La Tanière Fertile - Commandes</h1>
       <div class="nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="graph.html">Graphiques</a></li>
+          <li class="dropdown">
+            <a href="graph.html">Dashboards ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="graph.html#alertes">📢 Alerte Importante</a></li>
+              <li><a href="graph.html#meteo">🌤️ Météo Information</a></li>
+            </ul>
+          </li>
           <li><a href="actions.html">Commandes</a></li>
           <li><a href="telegram.html">Telegram</a></li>
           <li><a href="carte.html">Carte</a></li>
@@ -21,21 +66,37 @@
         </ul>
       </div>
     </div>
+
     <div class="content">
-      <h2>Contrôle de la ferme</h2>
+      <h2>🎛️ Contrôle en temps réel</h2>
+      <p>Utilisez ces commandes pour piloter les équipements de la ferme à distance. Les actions sont instantanées et permettent de réagir aux conditions relevées par les capteurs.</p>
+
       <div class="controls">
-        <button onclick="alert('Effaroucheur activé !')">🕊️ Activer l'effaroucheur</button>
-        <button onclick="alert('Effaroucheur désactivé !')">❌ Désactiver l'effaroucheur</button>
-        <button onclick="alert('Ventilateur activée !')">❄️ Activer le ventilateur</button>
-        <button onclick="alert('Ventilateur désactivé!')">🔥 désactivéle le ventilateur</button>
+        <div class="action-item">
+          <button onclick="alert('Effaroucheur activé !')">🕊️ Activer l'effaroucheur</button>
+          <p>Repousse automatiquement les nuisibles lorsque des bruits suspects sont détectés.</p>
+        </div>
+        <div class="action-item">
+          <button onclick="alert('Effaroucheur désactivé !')">❌ Désactiver l'effaroucheur</button>
+          <p>Arrête le système pour éviter un fonctionnement inutile et préserver la batterie.</p>
+        </div>
+        <div class="action-item">
+          <button onclick="alert('Ventilateur activé !')">❄️ Activer le ventilateur</button>
+          <p>Permet de rafraîchir l’environnement intérieur en cas de forte chaleur.</p>
+        </div>
+        <div class="action-item">
+          <button onclick="alert('Ventilateur désactivé !')">🔥 Désactiver le ventilateur</button>
+          <p>Stoppe la ventilation une fois la température redevenue normale.</p>
+        </div>
       </div>
     </div>
+
+    <footer>
+      <img src="images/logo.png" alt="Logo ferme" />
+      <img src="images/logoiut.png" alt="Logo IUT" />
+      <img src="images/lora.png" alt="Logo LoRaWAN" />
+      <p>&copy; 2025 La Tanière Fertile. Tous droits réservés.</p>
+    </footer>
   </div>
-  <footer>
-    <img src="logo.png" alt="Logo ShowPatate" height="40">
-    <img src="logoiut.png" alt="Logo IUT" height="40">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Lorawan-logo.png" alt="Logo LoRaWAN" height="40">
-    <p>&copy; 2025 ShowPatate - Contrôle Ferme</p>
-  </footer>
 </body>
 </html>

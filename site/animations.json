@@ -1,0 +1,14 @@
+[
+  {
+    "selector": ".header h1",
+    "animation": "pulse",
+    "duration": "4s",
+    "iteration": "infinite"
+  },
+  {
+    "selector": ".controls button",
+    "animation": "wiggle",
+    "duration": "0.5s",
+    "iteration": "hover"
+  }
+]

@@ -21,6 +21,12 @@ body {
   background-color: var(--secondary-color);
   color: var(--text-color);
   line-height: 1.6;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .container {
@@ -41,6 +47,12 @@ body {
   align-items: center;
   text-align: center;
   margin-bottom: 30px;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .header h1 {
@@ -65,6 +77,23 @@ body {
   font-weight: 600;
   background-color: transparent;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
 }
 
 .nav a:hover {
@@ -79,18 +108,42 @@ body {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   margin-bottom: 30px;
+  animation: fadeIn 1s ease;
 }
 
 .content h2 {
   font-size: 1.6rem;
   color: var(--accent-color);
   margin-bottom: 15px;
+  position: relative;
+}
+
+.content h2::before {
+  content: "🌱 ";
+  position: absolute;
+  left: -30px;
 }
 
 .content p, .content li {
   font-size: 1rem;
   margin-bottom: 10px;
 }
+.workflow {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.workflow li {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.workflow span {
+  margin: 0 6px;
+}
+
 
 iframe {
   border-radius: 12px;
@@ -106,6 +159,18 @@ iframe {
   justify-content: center;
   margin-top: 20px;
 }
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+}
+.action-item p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 
 .controls button {
   padding: 12px 20px;
@@ -115,11 +180,13 @@ iframe {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .controls button:hover {
   background-color: #cf8700;
+  transform: scale(1.05);
 }
 
 /* FOOTER */
@@ -134,10 +201,35 @@ footer {
   align-items: center;
   gap: 10px;
 }
+.pulse {
+  animation: pulse 4s infinite;
+}
+
+.wiggle {
+  animation: wiggle 0.5s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
 
 footer img {
   height: 40px;
   margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+footer img:hover {
+  transform: scale(1.1);
 }
 
 footer p {
@@ -160,4 +252,37 @@ footer p {
   .header h1 {
     font-size: 1.5rem;
   }
+}
+/* Dropdown */
+.nav .dropdown {
+  position: relative;
+}
+
+.nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  list-style: none;
+  margin-top: 8px;
+  padding: 10px 0;
+  min-width: 200px;
+  z-index: 999;
+}
+
+.nav .dropdown-menu li a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav .dropdown-menu li a:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.nav .dropdown:hover .dropdown-menu {
+  display: block;
 }

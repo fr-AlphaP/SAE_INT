@@ -1,28 +1,18 @@
 [[inputs.exec]]
-  # La commande est maintenant une chaîne de caractères, pas un tableau
   command = "python3 /scripts/script.py"
   data_format = "json"
   json_time_key = "time"
   json_time_format = "2006-01-02T15:04"
   name_override = "api_meteo"
-  interval = "1m"			#récupère les données toutes les heures
+
 
 [[inputs.mqtt_consumer]]
-  ## Liste des serveurs MQTT auxquels se connecter.
-  ## Le port standard non chiffré pour MQTT est 1883.
   servers = ["tcp://eu1.cloud.thethings.network:1883"]
-
-  ## Liste des sujets (topics) auxquels s'abonner.
   topics = [
     "v3/rt-ttn-app@ttn/devices/ers2-02/up",
-    "v3/rt-ttn-app@ttn/devices/ers-sound-01/up"
-  ]
-
-  ## Identifiants de connexion
+    "v3/rt-ttn-app@ttn/devices/ers-sound-01/up"]
   username = "rt-ttn-app@ttn"
   password = "NNSXS.TOR3G445SGXWD56HWGCKVUTFVXZMREAHKCVIFNA.FOSLC4TQYFZA6J6YBAOSDGJXXN543OGRF7Z5GVYUHDGOSZUMUBAQ"
-
-  ## The Things Network envoie généralement les données au format JSON.
   data_format = "json"
 
  [[outputs.influxdb_v2]]
@@ -30,3 +20,4 @@
   token = "admintoken"
   organization = "docs"
   bucket = "home" 
+

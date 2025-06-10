@@ -1,4 +1,6 @@
+#!/usr/bin/env python3
 import json
+import requests
 from datetime import datetime
 
 #Fonction pour convertir une date ISO. Par exemple : il y aura 6.07 pour 6h07.
