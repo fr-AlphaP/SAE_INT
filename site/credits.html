@@ -3,21 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crédits - ShowPatate</title>
+  <title>Crédits - La Tanière Fertile</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .content {
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    .content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    .content p {
+      font-size: 1.1rem;
+      margin: 0.5rem auto;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    .content a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    .content a:hover {
+      color: #cf8700;
+    }
+    .easter-egg {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #777;
+      opacity: 0;
+      animation: fadeInUp 2s ease 1s forwards;
+    }
+    .extras {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .extras img {
+      max-width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .extras img:hover {
+      transform: scale(1.05);
+    }
+    .disco {
+      animation: disco 0.25s infinite;
+    }
+    @keyframes disco {
+      0% { background-color: #ff0055; }
+      25% { background-color: #00ffcc; }
+      50% { background-color: #ffff00; }
+      75% { background-color: #ff6600; }
+      100% { background-color: #ff0055; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    #toggleDisco {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: #198754;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #toggleDisco:hover {
+      background: #136b44;
+    }
+  </style>
 </head>
-<body>
+<body id="body">
   <div class="container">
     <div class="header">
-      <h1>ShowPatate - Crédits</h1>
+      <h1>🎓 Crédits - La Tanière Fertile</h1>
       <div class="nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li class="dropdown">
             <a href="graph.html">Dashboards ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#alertes">📢 Alerte Importante</a></li>
-              <li><a href="#meteo">🌤️ Météo Information</a></li>
+              <li><a href="graph.html#alertes">📢 Alerte Importante</a></li>
+              <li><a href="graph.html#meteo">🌤️ Météo Information</a></li>
             </ul>
           </li>
           <li><a href="actions.html">Commandes</a></li>
@@ -27,22 +102,71 @@
         </ul>
       </div>
     </div>
-    </div>
+
     <div class="content">
-      <h2>Remerciements</h2>
-      <p>Ce projet a été réalisé dans le cadre de la SAE 2.04 à l’IUT Réseaux et Télécoms de Béziers.</p>
-      <p>Un grand merci à toute l'équipe pédagogique, ainsi qu’aux collaborateurs techniques du projet ShowPatate.</p>
-      <p>Inspiré du site <a href="https://showpatate.top/" target="_blank">showpatate.top</a></p>
-      <p><strong>Équipe projet :</strong> Titouan Mouysset, Roméo Maraval, Osman Cetiner & Valentin Malot</p>
+      <h2>✨ Remerciements</h2>
+      <p>Ce projet a été mené avec passion dans le cadre de la SAE 2.04 à l’IUT Réseaux & Télécoms de Béziers.</p>
+      <p>Merci à toute l'équipe pédagogique pour l'encadrement, et aux camarades pour leur énergie et leur créativité.</p>
+      <p>Ce site s'inspire du projet <a href="https://showpatate.top/" target="_blank">showpatate.top</a> pour proposer une interface ludique, accessible et fonctionnelle.</p>
+      <p><strong>Équipe :</strong> <span id="titouan" style="cursor:pointer;color:var(--accent-color);font-weight:bold;">Titouan Mouysset</span>, Roméo Maraval, Osman Cetiner & Valentin Malot</p>
       <p><strong>Version :</strong> Juin 2025 - v1.0</p>
+
+      <div class="extras">
+        <p><strong>Rejoignez notre groupe Telegram :</strong></p>
+        <img src="images/frame.png" alt="QR Code Telegram">
+
+        <p><strong>Un grand merci aussi à :</strong><br>
+          🐔 Les poules de test courageuses<br>
+          🧪 Les bugs qui nous ont fait progresser<br>
+          🧑‍🌾 Et à tous ceux qui croient en l’agriculture connectée
+        </p>
+      </div>
+
+      <div class="easter-egg">
+      
+      </div>
+
     </div>
+
+    <footer>
+      <img src="images/logo.png" alt="Logo ferme" />
+      <img src="images/logoiut.png" alt="Logo IUT" />
+      <img src="images/lora.png" alt="Logo LoRaWAN" />
+      <p>&copy; 2025 La Tanière Fertile. Tous droits réservés.</p>
+    </footer>
   </div>
-  <footer>
-    <img src="images/pomme.png" alt="Logo ferme" />
-    <img src="images/logoiut.png" alt="Logo IUT" />
-    <img src="images/lora.png" alt="Logo LoRaWAN" />
-    <p>&copy; 2025 La Tanière Fertile. Tous droits réservés.</p>
-  </footer>
-</div>
+
+  <script>
+    // Disco mode via Konami code
+    let input = "";
+    const secret = "ArrowUpArrowDownArrowLeftArrowRight";
+    window.addEventListener("keydown", (e) => {
+      input += e.key;
+      if (input.includes(secret)) {
+        document.getElementById("body").classList.add("disco");
+        alert("🥔 Mode disco activé !");
+        input = "";
+      }
+    });
+
+    // Disco mode via 10 clicks sur Titouan
+    let clickCount = 0;
+    const titouan = document.getElementById("titouan");
+    titouan.addEventListener("click", () => {
+      clickCount++;
+      if (clickCount === 10) {
+        document.getElementById("body").classList.add("disco");
+        alert("🕺 Mode disco activé !");
+        clickCount = 0;
+      }
+    });
+
+    // Bouton de désactivation du mode disco
+    const toggleBtn = document.getElementById("toggleDisco");
+    toggleBtn.addEventListener("click", () => {
+      document.getElementById("body").classList.remove("disco");
+      alert("🎵 Mode disco désactivé !");
+    });
+  </script>
 </body>
 </html>

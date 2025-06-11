@@ -16,6 +16,15 @@ services:
     networks:
       - grafana-net
 
+  php:
+    build: ./php
+    restart: unless-stopped
+    volumes:
+      - ./php/api.php:/var/www/html/api.php
+      - ./py:/py 
+    networks:
+      - grafana-net
+
   postgres:
     image: postgres:15
     container_name: postgres_for_grafana
@@ -44,7 +53,7 @@ services:
       - GF_DATABASE_SSL_MODE=disable
       - GF_DATABASE_PASSWORD__FILE=/run/secrets/db_password
     # Grafana 
-      - GF_SERVER_ROOT_URL=https://grafana.valentin-malot.fr
+      - GF_SERVER_ROOT_URL=${GRAFANA_SERVER_ROOT_URL}
       - GF_PLUGINS_PREINSTALL=grafana-clock-panel
       - GF_SECURITY_ALLOW_EMBEDDING=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -97,6 +106,7 @@ services:
     volumes:
       - ${TELEGRAF_CONF_FILE}:/etc/telegraf/telegraf.conf:ro
       - ./py/script.py:/scripts/script.py:ro
+      - ./py/alert.py:/scripts/alert.py:ro
     depends_on:
       - influxdb2
     networks: 

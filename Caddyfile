@@ -9,4 +9,8 @@ influxdb.valentin-malot.fr {
 lat.valentin-malot.fr {
     root * /srv
     file_server
+
+    php_fastcgi php:9000 {
+        root /var/www/html
+    }
 }

@@ -6,23 +6,20 @@
   <title>Graphiques - La Tanière Fertile</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .graph-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2rem;
-    }
-    .graph-item {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 1rem;
-    }
-    .graph-item iframe {
+    .full-dashboard {
       width: 100%;
-      height: 600px;
-      border-radius: 8px;
+      max-width: 100%;
+      margin: 2rem auto;
+      border-radius: 12px;
       border: 2px solid #eee;
+      box-shadow: var(--shadow);
+      height: 1600px;
     }
+
+    .content iframe {
+      display: block;
+    }
+
     .graph-item p {
       font-size: 0.9rem;
       margin-top: 0.5rem;
@@ -30,7 +27,7 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" style="max-width: 80%;">
     <div class="header">
       <h1>Tableaux de bord Grafana</h1>
       <div class="nav">
@@ -54,76 +51,23 @@
     <div class="content">
       <section id="alertes">
         <h2>📢 Alerte Importante</h2>
-        <p>Les données collectées via LoRaWAN sont stockées dans InfluxDB puis affichées dans Grafana. Voici les principaux graphiques accessibles :</p>
-
-        <div class="graph-grid">
-          <div class="graph-item">
-            <h3>🔊 Niveau sonore</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/11a5cbc2-b029-47c1-8821-e495bc3c3818/edbc075?orgId=1&from=2025-06-10T01:18:25.400Z&to=2025-06-10T07:18:25.400Z&timezone=browser&viewPanel=panel-6"></iframe>
-            <p>Ce graphique montre le niveau sonore dans le poulailler.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌡️ Température</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/11a5cbc2-b029-47c1-8821-e495bc3c3818/edbc075?orgId=1&from=2025-06-10T01:18:25.400Z&to=2025-06-10T07:18:25.400Z&timezone=browser&viewPanel=panel-5"></iframe>
-            <p>Surveillance thermique des animaux.</p>
-          </div>
-          <div class="graph-item">
-            <h3>💧 Humidité</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/11a5cbc2-b029-47c1-8821-e495bc3c3818/edbc075?orgId=1&from=2025-06-10T01:18:25.400Z&to=2025-06-10T07:18:25.400Z&timezone=browser&viewPanel=panel-1"></iframe>
-            <p>Évite les maladies respiratoires et stabilise l'ambiance.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌞 Lumière</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/11a5cbc2-b029-47c1-8821-e495bc3c3818/edbc075?orgId=1&from=2025-06-10T01:18:25.400Z&to=2025-06-10T07:18:25.400Z&timezone=browser&viewPanel=panel-3"></iframe>
-            <p>Adaptation de la lumière au cycle naturel des poules.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🦶 Mouvement</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/11a5cbc2-b029-47c1-8821-e495bc3c3818/edbc075?orgId=1&from=2025-06-10T01:18:25.400Z&to=2025-06-10T07:18:25.400Z&timezone=browser&viewPanel=panel-4"></iframe>
-            <p>Détection de comportements anormaux ou d'inactivité.</p>
-          </div>
-        </div>
+        <p>Ce tableau de bord synthétique présente en un seul écran les principales mesures critiques : bruit, température, humidité, lumière et mouvement. Il permet de détecter rapidement toute anomalie dans le poulailler.</p>
+        <iframe 
+          src="https://grafana.valentin-malot.fr/goto/wQGCfTYNg?orgId=1" 
+          frameborder="0" 
+          class="full-dashboard">
+        </iframe>
       </section>
 
       <section id="meteo">
         <h2>🌤️ Météo Information</h2>
-        <p>Les données météo suivantes permettent d'ajuster les conditions de vie du poulailler selon les éléments extérieurs. Ces informations aident à anticiper les changements d'environnement et améliorer le confort des animaux.</p>
-      
-        <div class="graph-grid">
-          <div class="graph-item">
-            <h3>☁️ Couverture nuageuse</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-4"></iframe>
-            <p>Indique le taux de couverture nuageuse au-dessus du poulailler. Une forte couverture peut réduire l'éclairage naturel et affecter les cycles des poules.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌡️ Température ressentie</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-9"></iframe>
-            <p>Calcul basé sur la température et l’humidité ambiante pour évaluer ce que les animaux ressentent réellement. Important pour le bien-être thermique.</p>
-          </div>
-          <div class="graph-item">
-            <h3>❄️ Chute de neige</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-3"></iframe>
-            <p>Surveillance des précipitations neigeuses pouvant perturber la température intérieure et l'accès extérieur des animaux.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌧️ Pluie</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-2"></iframe>
-            <p>Permet de prévoir les averses et d’ajuster l'aération ou l'accès extérieur pour éviter l’humidité excessive.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌇 Coucher du soleil</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-11"></iframe>
-            <p>Heure à laquelle le soleil disparaît. Sert à synchroniser l’éclairage artificiel pour maintenir le rythme naturel des poules.</p>
-          </div>
-          <div class="graph-item">
-            <h3>🌅 Lever du soleil</h3>
-            <iframe src="http://grafana.valentin-malot.fr/d/be70604e-59e0-45e4-9b24-87e70ef09f26/meteo?orgId=1&from=2025-06-10T02:03:16.482Z&to=2025-06-10T08:03:16.482Z&timezone=browser&viewPanel=panel-10"></iframe>
-            <p>Heure du lever de soleil, utile pour activer progressivement la lumière et simuler un réveil naturel des animaux.</p>
-          </div>
-        </div>
+        <p>Ce tableau de bord regroupe toutes les données météo utiles à la gestion du poulailler : température extérieure, humidité, lever/coucher du soleil, pluie, neige, et autres conditions atmosphériques.</p>
+        <iframe 
+          src="https://grafana.valentin-malot.fr/goto/NhncLTYNR?orgId=1" 
+          frameborder="0" 
+          class="full-dashboard">
+        </iframe>
       </section>
-      
-      
     </div>
 
     <footer>
