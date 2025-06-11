@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Tanière Fertile - Accueil</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .home-banner {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .home-banner img {
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease-in;
+    }
+    .home-banner p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #444;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -16,8 +39,8 @@
           <li class="dropdown">
             <a href="graph.html">Dashboards ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#alertes">📢 Alerte Importante</a></li>
-              <li><a href="#meteo">🌤️ Météo Information</a></li>
+              <li><a href="graph.html#alertes">📢 Alerte Importante</a></li>
+              <li><a href="graph.html#meteo">🌤️ Météo Information</a></li>
             </ul>
           </li>
           <li><a href="actions.html">Commandes</a></li>
@@ -28,47 +51,20 @@
       </div>
     </div>
 
-    <div class="content">
-      <section>
-        <h2>Présentation du projet</h2>
-        <p>La Tanière Fertile est une ferme expérimentale connectée, développée par des étudiants de l’IUT Réseaux & Télécoms. Ce site permet au fermier et à ses acolytes de :</p>
-        <ul>
-          <li>📊 Surveiller les données en temps réel via Grafana</li>
-          <li>💡 Contrôler les équipements à distance (effaroucheur, lampe, clim...)</li>
-          <li>📍 Localiser les dispositifs sur une carte</li>
-          <li>📲 Recevoir des alertes via un bot Telegram</li>
-        </ul>
-        <p>Explorez les différentes sections via la navigation ci-dessus.</p>
-      </section>
-
-      <section>
-        <h2>🧠 Comment fonctionne notre système</h2>
-        <p>Notre ferme connectée repose sur une architecture moderne composée des briques suivantes :</p>
-        <ul>
-          <li><strong>Capteurs LoRaWAN</strong> : transmettent les données environnementales (bruit, température...)</li>
-          <li><strong>MQTT</strong> : protocole léger pour publier les données</li>
-          <li><strong>Telegraf</strong> : collecte et redirige vers InfluxDB</li>
-          <li><strong>InfluxDB</strong> : stockage temporel</li>
-          <li><strong>Grafana</strong> : visualisation des données</li>
-          <li><strong>Bot Telegram</strong> : envoie des alertes automatiquement</li>
-        </ul>
-        <ol class="workflow">
-          <li>LoRaWAN <span>&rarr;</span> MQTT</li>
-          <li>MQTT <span>&rarr;</span> Telegraf</li>
-          <li>Telegraf <span>&rarr;</span> InfluxDB</li>
-          <li>InfluxDB <span>&rarr;</span> Grafana</li>
-          <li>Grafana <span>&rarr;</span> Bot Telegram</li>
-        </ol>
-        <p>Toutes ces briques travaillent ensemble pour une gestion fluide et accessible depuis n'importe quel navigateur.</p>
-      </section>
+    <div class="content home-banner">
+      <img src="images/hackthefarm.png" alt="Hack the Farm">
+      <p><strong>Ce site web permet au fermier et à ses acolytes</strong> de surveiller la ferme, recevoir des alertes et contrôler certains équipements à distance, simplement et efficacement.</p>
     </div>
 
     <footer>
-      <img src="images/logo.png" alt="Logo ferme" />
-      <img src="images/logoiut.png" alt="Logo IUT" />
-      <img src="images/lora.png" alt="Logo LoRaWAN" />
+      <div class="footer-logos">
+        <img src="images/logo.png" alt="Logo ferme" />
+        <img src="images/logoiut.png" alt="Logo IUT" />
+        <img src="images/lora.png" alt="Logo LoRaWAN" />
+      </div>
       <p>&copy; 2025 La Tanière Fertile. Tous droits réservés.</p>
     </footer>
+
   </div>
 </body>
 </html>

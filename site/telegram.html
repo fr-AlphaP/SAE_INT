@@ -3,21 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Groupe Telegram - ShowPatate</title>
+  <title>Groupe Telegram - La Tanière Fertile</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .telegram-section {
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    .telegram-section h2 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .telegram-section p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0.5rem auto;
+      line-height: 1.6;
+    }
+    .telegram-logo {
+      margin-top: 20px;
+    }
+    .telegram-logo img {
+      width: 150px;
+      height: 100px;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .telegram-logo img:hover {
+      transform: scale(1.1);
+    }
+    .qr-code {
+      margin-top: 30px;
+    }
+    .qr-code img {
+      max-width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>ShowPatate - Groupe Telegram</h1>
+      <h1>La Tanière Fertile - Groupe Telegram</h1>
       <div class="nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li class="dropdown">
             <a href="graph.html">Dashboards ▾</a>
             <ul class="dropdown-menu">
-              <li><a href="#alertes">📢 Alerte Importante</a></li>
-              <li><a href="#meteo">🌤️ Météo Information</a></li>
+              <li><a href="graph.html#alertes">📢 Alerte Importante</a></li>
+              <li><a href="graph.html#meteo">🌤️ Météo Information</a></li>
             </ul>
           </li>
           <li><a href="actions.html">Commandes</a></li>
@@ -27,19 +64,31 @@
         </ul>
       </div>
     </div>
-    <div class="content">
-      <h2>Rejoindre notre canal Telegram</h2>
-      <p>Le bot ShowPatate vous envoie des alertes importantes en cas d’activité sonore suspecte, coupure électrique, ou dysfonctionnement du matériel.</p>
-      <p>Rejoignez le groupe privé Telegram de la ferme pour être informé en temps réel :</p>
-      <p style="margin-top: 20px;">
-        <a href="https://t.me/+cJf3_JBHP7ZjOWE0" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: #198754; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">📲 Rejoindre le Groupe Telegram</a>
-      </p>
+
+    <div class="content telegram-section">
+      <h2>📲 Rejoignez notre canal Telegram</h2>
+      <p>Le bot <strong>ShowPatate</strong> vous envoie des alertes importantes en cas de bruit inhabituel, coupure de capteurs, ou valeurs anormales. Ce canal est réservé aux responsables de la ferme connectée.</p>
+      <p>Recevez les alertes en temps réel, suivez les événements et discutez avec l'équipe en rejoignant notre groupe privé :</p>
+
+      <div class="telegram-logo">
+        <a href="https://t.me/+cJf3_JBHP7ZjOWE0" target="_blank">
+          <img src="images/telegram.png" alt="Logo Telegram">
+        </a>
+      </div>
+
+      <div class="qr-code">
+        <p>Ou scannez ce QR Code :</p>
+        <img src="images/frame.png" alt="QR Code Telegram">
+      </div>
     </div>
   </div>
+
   <footer>
-    <img src="images/logo.png" alt="Logo ferme" />
-    <img src="images/logoiut.png" alt="Logo IUT" />
-    <img src="images/lora.png" alt="Logo LoRaWAN" />
+    <div class="footer-logos">
+      <img src="images/logo.png" alt="Logo ferme" />
+      <img src="images/logoiut.png" alt="Logo IUT" />
+      <img src="images/lora.png" alt="Logo LoRaWAN" />
+    </div>
     <p>&copy; 2025 La Tanière Fertile. Tous droits réservés.</p>
   </footer>
 </body>

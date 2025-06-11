@@ -286,3 +286,20 @@ footer p {
 .nav .dropdown:hover .dropdown-menu {
   display: block;
 }
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* espace horizontal entre les logos */
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.footer-logos img {
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logos img:hover {
+  transform: scale(1.1);
+}
