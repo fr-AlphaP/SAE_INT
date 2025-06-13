@@ -1,6 +1,7 @@
 # SAE24 - Projet Intégratif - Groupe 9 
 ___
 
+- Défi 6 : Surveillance Sonore Intelligente et Protection du Poulailler
 - IUT de Béziers, RT1
 - 13/05/2025
 
