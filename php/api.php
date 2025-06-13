@@ -1,11 +1,12 @@
 <?php
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['status' => 'error', 'message' => 'Méthode non autorisée.']);
-    exit;
-}
+// if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+//     http_response_code(405);
+//     echo json_encode(['status' => 'error', 'message' => 'Méthode non autorisée.']);
+//     exit;
+// }
+
 
 $json_data = file_get_contents('php://input');
 $data = json_decode($json_data, true);

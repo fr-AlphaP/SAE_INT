@@ -59,14 +59,14 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([45.605068, 0.971626], 15);
+    const map = L.map('map').setView([45.636726, 1.009213], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap',
       maxZoom: 19,
     }).addTo(map);
 
-    const marker = L.marker([45.605068, 0.971626]).addTo(map);
+    const marker = L.marker([45.636726, 1.009213]).addTo(map);
     marker.bindPopup('<strong>📍 Emplacement du poulailler</strong>').openPopup();
   </script>
 </body>
