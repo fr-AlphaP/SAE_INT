@@ -1,4 +1,4 @@
-# SAE24 - Projet Intégrativ - Groupe 9 
+# SAE24 - Projet Intégratif - Groupe 9 
 ___
 
 - IUT de Béziers, RT1
