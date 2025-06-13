@@ -5,6 +5,10 @@ ___
 - IUT de Béziers, RT1
 - 13/05/2025
 
+___
+
+![Hack the Farm 2](site/images/hackthefarm2.png)
+
 
 # Déploiement du projet :
 ___
