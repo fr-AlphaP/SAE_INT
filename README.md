@@ -74,6 +74,36 @@ Ce n’était pas notre cas car les commandes avec docker compose fonctionnaient
 ```python
 git clone https://github.com/fr-AlphaP/SAE_INT
 cd ~/SAE_INT
+```
+
+# Réaliser des modifications sur le projet :
+___
+
+## Identifiants et mots de passe :
+
+
+Afin de modifier les identifiants administrateur pour les applications du projet, placez vous dans le dossier secrets de SAE_INT à l’aide de cette commande :
+
+```python
+mkdir ~/SAE_INT/secrets
+cd ~/SAE_INT/secrets
+```
+
+Pour pouvoir lancer tous les services, vous devez créer chacun de ces fichiers et les modifier en fonction de vos besoins :
+- grafana-admin-password : Mot de passe admin de Grafana
+- grafana-admin-username : Nom d’utilisateur administrateur par défaut
+- influxdb2-admin-password : Mot de passe de la base de donnée InfluxDB
+- influxdb2-admin-token : Token unique qui permet à Grafana deparler à InfluxDB
+- influxdb2-admin-username : Nom d’utilisateur admin de InfluxDB
+
+Exemple : 
+```
+cd ~/SAE_INT/secrets
+touch grafana-admin-password
+nano grafana-admin-password
+```
+- Lancez par la suite le projet : 
+```
 docker compose up -d # ou 
 # docker-compose up -d
 ```
@@ -107,24 +137,3 @@ rm -rf SAE_INT
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
 ```
-
-# Réaliser des modifications sur le projet :
-___
-
-## Identifiants et mots de passe :
-
-
-Afin de modifier les identifiants administrateur pour les applications du projet, placez vous dans le dossier secrets de SAE_INT à l’aide de cette commande :
-
-```python
-cd ~/SAE_INT/secrets
-```
-
-Lorsque vous réalisez un ls, vous avez tous les fichiers relatifs aux configurations 
-Afin de modifier identifiants, modifiez ces fichiers : 
-
-- grafana-admin-password : Mot de passe admin de Grafana
-- grafana-admin-username : Nom d’utilisateur administrateur par défaut
-- influxdb2-admin-password : Mot de passe de la base de donnée InfluxDB
-- influxdb2-admin-token : Token unique qui permet à Grafana deparler à InfluxDB
-- influxdb2-admin-username : Nom d’utilisateur admin de InfluxDB
